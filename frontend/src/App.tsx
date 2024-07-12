@@ -5,8 +5,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout></Layout>} />
-        <Route path="/search" element={<>Search Page</>} />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <p>Página Inicial</p>
+            </Layout>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <Layout>
+              <p>Página de Busca</p>
+            </Layout>
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
