@@ -37,3 +37,5 @@ router.post('/register', async (req: Request, res: Response) => {
     res.status(500).send({ message: 'Desculpa. Mas algo deu errado...' });
   }
 });
+
+export default router;
