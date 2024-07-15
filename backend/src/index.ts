@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { AddressInfo } from 'net';
 import 'dotenv/config';
 import mongoose from 'mongoose';
+import userRoutes from './routes/users';
 
 mongoose.connect(process.env.MONGO_CONNECTION_STRING as string);
 
@@ -23,6 +24,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
   }
 });
 
-app.get('/api/test', async (req: Request, res: Response) => {
-  res.json({ message: 'Hello world from express!' });
-});
+app.use('/api/users', userRoutes);
