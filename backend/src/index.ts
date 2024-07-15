@@ -1,10 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { AddressInfo } from 'net';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import userRoutes from './routes/users';
+import authRoutes from './routes/auth';
 
 mongoose.connect(process.env.MONGO_CONNECTION_STRING as string);
 
@@ -24,4 +25,6 @@ const server = app.listen(process.env.PORT || 3003, () => {
   }
 });
 
+// API routes endpoints
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
