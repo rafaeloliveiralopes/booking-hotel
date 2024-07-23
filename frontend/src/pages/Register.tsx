@@ -9,10 +9,19 @@ export default function Register() {
     confirmPassword: string;
   };
 
-  const { register, watch } = useForm<RegisterFormData>();
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormData>();
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
 
   return (
-    <form className="flex flex-col gap-5 mx-auto px-4">
+    <form className="flex flex-col gap-5 mx-auto px-4" onSubmit={onSubmit}>
       <h2 className="text-3xl font-bold">Criar conta</h2>
       <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
         Nome
@@ -21,6 +30,9 @@ export default function Register() {
           className="border rounded w-full py-1 px-2 font-normal"
           {...register('firstName', { required: 'Obrigatório preencher' })}
         />
+        {errors.firstName && (
+          <span className="text-red-500">{errors.firstName.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
         Sobrenome
@@ -29,6 +41,9 @@ export default function Register() {
           className="border rounded w-full py-1 px-2 font-normal"
           {...register('lastName', { required: 'Obrigatório preencher' })}
         />
+        {errors.lastName && (
+          <span className="text-red-500">{errors.lastName.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold">
         Email
@@ -37,6 +52,9 @@ export default function Register() {
           className="border rounded w-full py-1 px-2 font-normal"
           {...register('email', { required: 'Obrigatório preencher' })}
         />
+        {errors.email && (
+          <span className="text-red-500">{errors.email.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold">
         Senha
@@ -51,6 +69,9 @@ export default function Register() {
             },
           })}
         />
+        {errors.password && (
+          <span className="text-red-500">{errors.password.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold">
         Confirme a senha
@@ -68,6 +89,9 @@ export default function Register() {
             },
           })}
         />
+        {errors.password && (
+          <span className="text-red-500">{errors.password.message}</span>
+        )}
       </label>
       <span>
         <button
