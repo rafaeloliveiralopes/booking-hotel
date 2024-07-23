@@ -27,9 +27,9 @@ export default function Register() {
     },
   });
 
-  const onSubmit = handleSubmit((data)=>{
-    mutation.mutate(data)
-  })
+  const onSubmit = handleSubmit((data) => {
+    mutation.mutate(data);
+  });
 
   return (
     <form className="flex flex-col gap-5 mx-auto px-4" onSubmit={onSubmit}>
