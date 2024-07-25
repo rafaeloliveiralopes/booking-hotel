@@ -22,7 +22,6 @@ function App() {
             </Layout>
           }
         />
-        <Route path="*" element={<Navigate to="/" />} />
         <Route
           path="/register"
           element={
@@ -31,6 +30,7 @@ function App() {
             </Layout>
           }
         />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
