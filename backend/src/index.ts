@@ -5,12 +5,14 @@ import { AddressInfo } from 'net';
 import mongoose from 'mongoose';
 import userRoutes from './routes/users';
 import authRoutes from './routes/auth';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_CONNECTION_STRING as string);
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Permiti o envio de credenciais (cookies, cabeçalhos de autenticação)
